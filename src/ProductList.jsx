@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductList({ onHomeClick }) {
   const dispatch = useDispatch();
+  const quantityTotal = useSelector((state) => state.cart.quantityTotal);
 
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -349,6 +350,15 @@ function ProductList({ onHomeClick }) {
                     stroke-width="2"
                     id="mainIconPathAttribute"
                   ></path>
+                  <text
+                    x="100"
+                    y="152"
+                    fontFamily="Verdana"
+                    fontSize="90"
+                    fill="white"
+                  >
+                    {quantityTotal}
+                  </text>
                 </svg>
               </h1>
             </a>
